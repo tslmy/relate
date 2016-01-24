@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Relate</title>
+
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <style>
+#TERMINAL {
+    display: none;
+}
+
+section {
+    width: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body {
+    text-align: center;
+}
+
+.entity {
+    border: solid 1px #ddd;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0 10px 25px #eee;
+}
+
+.entity .label {
+    background: #008ed4;
+    color: #fff;
+    border-radius: 5px 5px 0 0;
+}
+
+.property .label {
+    background: #e1f2fa;
+    color: #5992aa;
+}
+
+.label {
+    font-size: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.property .description {
+    display: none;
+}
+
+.entity .description {
+    color: #aaa;
+    font-size: 14px;
+    padding: 10px;
+    margin: 0;
+}
+
+.down:after {
+    content: "";
+    width: 0;
+    height: 40px;
+    position: relative;
+    top: 20px;
+    border-left: 90px solid transparent;
+    border-right: 90px solid transparent;
+    border-top: 20px solid #e1f2fa;
+}
+
+.down {
+    margin-top: 15px;
+}
+
+.down:before {
+    content: "";
+    width: 0;
+    height: 40px;
+    position: relative;
+    top: 0;
+    border-left: 90px solid #e1f2fa;
+    border-right: 90px solid #e1f2fa;
+    border-top: 20px solid transparent;
+}
+
+.property {
+    width: 180px;
+}
+
+.up:before {
+    content: "";
+    width: 0;
+    height: 40px;
+    position: relative;
+    top: -20px;
+    border-left: 90px solid transparent;
+    border-right: 90px solid transparent;
+    border-bottom: 20px solid #e1f2fa;
+}
+
+.up {
+    margin-bottom: 15px;
+}
+
+.up:after {
+    content: "";
+    width: 0;
+    height: 40px;
+    border-left: 90px solid #e1f2fa;
+    border-right: 90px solid #e1f2fa;
+    border-bottom: 20px solid transparent;
+}
+    </style>
+</head>
+
+<body>
+    <form class="pure-form" id="form">
+        <fieldset>
+            <legend>Relate Concepts</legend>
+            <input id="A" type="search" value="phitsanulok" placeholder="A">
+            <input id="B" type="search" value="lollipop" placeholder="B">
+            <button id="button" type="submit" class="pure-button pure-button-primary">Relate</button>
+        </fieldset>
+    </form>
+    <div class="pure-u-1">
+        <dl id="result"></dl>
+    </div>
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="static/wikidata-sdk.min.js"></script>
+    <script src="static/script.js"></script>
+</body>
+</html>
