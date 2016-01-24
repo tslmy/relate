@@ -1,16 +1,41 @@
 function stringStartsWith (string, prefix) {
     return string.slice(0, prefix.length) == prefix;
 } //http://stackoverflow.com/questions/646628/how-to-check-if-a-string-startswith-another-string
+var options = {
+    url: function(phrase) {
+        return wdk.searchEntities({
+          search: phrase,
+          format: 'json',
+          language: 'en'
+        }); 
+    },
+    ajaxSettings: {
+        dataType: "jsonp"
+    },
+    listLocation: "search",
+    getValue: "label",
+    template: {
+        type: "description",
+        fields: {
+            description: "description"
+        }
+    },
+    requestDelay: 500
+};
 $( document ).ready(function () {
     arrowUp_div = '<div class="arrowUp"></div>';
     arrowDown_div = '<div class="arrowDown"></div>';
     result_div = $("#result");
     button_div = $("#button");
+    A_div = $("#A");
+    B_div = $("#B");
+    A_div.easyAutocomplete(options);
+    B_div.easyAutocomplete(options);
 });
 $('#form').submit(function () {
     button_div.addClass('pure-button-disabled');
-    userInputA = $('input#A').val();
-    userInputB = $('input#B').val();
+    userInputA = A_div.val();
+    userInputB = B_div.val();
     result_div.hide();
     result_div.html('');
     $.post( "/run", 
@@ -26,9 +51,9 @@ $('#form').submit(function () {
                         pair = r[i];
                         property = pair[0];
                         entity = pair[1];
-                        propertyUp_div = '<section class="property up" id="'+property+'"><dt class="label">'+property+'</dt></section>';
-                        propertyDown_div = '<section class="property down" id="'+property+'">'+property+'</section>';
-                        entity_div = '<section class="entity" id="'+entity+'">'+entity+'</section>';
+                        propertyUp_div = '<section class="property up" id="'+property+'"></section>';
+                        propertyDown_div = '<section class="property down" id="'+property+'"></section>';
+                        entity_div = '<section class="entity" id="'+entity+'"></section>';
                         if (previousItem == entity) {
                             ifReversed = true;
                             toAppend.push(propertyUp_div);
