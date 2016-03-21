@@ -75,7 +75,7 @@ def expandClaims(claimsInDict):
 def explore(testItemId):
 	global pathsTo, nodesOnNextLevelFor, ifFoundAnswer, bestAnswer
 	for propertyId,itemId in expandClaims(wikidataGetClaims(testItemId)):
-		if not (propertyId in ['P1343'] or itemId in ['Q4167836','Q17362920','Q17633526','Q20088085']): #BLACKLIST
+		if not (propertyId in ['P1343'] or itemId in ['Q4167836','Q17362920','Q17633526','Q20088085','Q21286738']): #BLACKLIST
 			nodesOnNextLevelFor[A].update([itemId])
 			newPath = pathsTo[A][testItemId]+[(propertyId,itemId)]
 			if itemId in pathsTo[B].keys():
