@@ -1,135 +1,144 @@
 <!doctype html>
 <html>
+
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relate</title>
-    <link rel="stylesheet" href="static/easy-autocomplete.min.css"> 
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="static/easy-autocomplete.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-#TERMINAL {
-    display: none;
-}
+    #TERMINAL {
+        display: none;
+    }
 
-section {
-    width: 200px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
+    section {
+        width: 200px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
-body {
-    text-align: center;
-}
-.easy-autocomplete {
-    margin: auto;
-}
-.entity {
-    border: solid 1px #ddd;
-    border-radius: 5px;
-    background: #fff;
-    box-shadow: 0 10px 25px #eee;
-}
+    body {
+        text-align: center;
+    }
 
-.entity .label {
-    background: #008ed4;
-    color: #fff;
-    border-radius: 5px 5px 0 0;
-}
+    .easy-autocomplete {
+        margin: auto;
+    }
 
-.property .label {
-    background: #e1f2fa;
-    color: #5992aa;
-}
+    .entity {
+        border: solid 1px #ddd;
+        border-radius: 5px;
+        background: #fff;
+        box-shadow: 0 10px 25px #eee;
+    }
 
-.label {
-    font-size: 20px;
-    padding: 10px;
-    box-sizing: border-box;
-}
+    .entity .label {
+        background: #008ed4;
+        color: #fff;
+        border-radius: 5px 5px 0 0;
+    }
 
-.property .description {
-    display: none;
-}
+    .property .label {
+        background: #e1f2fa;
+        color: #5992aa;
+    }
 
-.entity .description {
-    color: #aaa;
-    font-size: 14px;
-    padding: 10px;
-    margin: 0;
-}
+    .label {
+        font-size: 20px;
+        padding: 10px;
+        box-sizing: border-box;
+    }
 
-.down:after {
-    content: "";
-    width: 0;
-    height: 40px;
-    position: relative;
-    top: 20px;
-    border-left: 90px solid transparent;
-    border-right: 90px solid transparent;
-    border-top: 20px solid #e1f2fa;
-}
+    .property .description {
+        display: none;
+    }
 
-.down {
-    margin-top: 15px;
-}
+    .entity .description {
+        color: #aaa;
+        font-size: 14px;
+        padding: 10px;
+        margin: 0;
+    }
 
-.down:before {
-    content: "";
-    width: 0;
-    height: 40px;
-    position: relative;
-    top: 0;
-    border-left: 90px solid #e1f2fa;
-    border-right: 90px solid #e1f2fa;
-    border-top: 20px solid transparent;
-}
+    .down:after {
+        content: "";
+        width: 0;
+        height: 40px;
+        position: relative;
+        top: 20px;
+        border-left: 90px solid transparent;
+        border-right: 90px solid transparent;
+        border-top: 20px solid #e1f2fa;
+    }
 
-.property {
-    width: 180px;
-}
+    .down {
+        margin-top: 15px;
+    }
 
-.up:before {
-    content: "";
-    width: 0;
-    height: 40px;
-    position: relative;
-    top: -20px;
-    border-left: 90px solid transparent;
-    border-right: 90px solid transparent;
-    border-bottom: 20px solid #e1f2fa;
-}
+    .down:before {
+        content: "";
+        width: 0;
+        height: 40px;
+        position: relative;
+        top: 0;
+        border-left: 90px solid #e1f2fa;
+        border-right: 90px solid #e1f2fa;
+        border-top: 20px solid transparent;
+    }
 
-.up {
-    margin-bottom: 15px;
-}
+    .property {
+        width: 180px;
+    }
 
-.up:after {
-    content: "";
-    width: 0;
-    height: 40px;
-    border-left: 90px solid #e1f2fa;
-    border-right: 90px solid #e1f2fa;
-    border-bottom: 20px solid transparent;
-}
+    .up:before {
+        content: "";
+        width: 0;
+        height: 40px;
+        position: relative;
+        top: -20px;
+        border-left: 90px solid transparent;
+        border-right: 90px solid transparent;
+        border-bottom: 20px solid #e1f2fa;
+    }
+
+    .up {
+        margin-bottom: 15px;
+    }
+
+    .up:after {
+        content: "";
+        width: 0;
+        height: 40px;
+        border-left: 90px solid #e1f2fa;
+        border-right: 90px solid #e1f2fa;
+        border-bottom: 20px solid transparent;
+    }
     </style>
 </head>
 
 <body>
-    <form class="pure-form" id="form">
-        <fieldset>
-            <legend>Relate Concepts</legend>
-            <input id="A" type="search" value="phitsanulok" placeholder="A">
-            <input id="B" type="search" value="lollipop" placeholder="B">
-            <button id="button" type="submit" class="pure-button pure-button-primary">Relate</button>
-        </fieldset>
-    </form>
-    <div class="pure-u-1">
-        <dl id="result"></dl>
+    <div class="pure-g">
+        <div class="pure-u-1">
+            <form class="pure-form" id="form">
+                <fieldset>
+                    <legend>Relate Concepts</legend>
+                    <input id="A" type="search" value="phitsanulok" placeholder="A">
+                    <input id="B" type="search" value="lollipop" placeholder="B">
+                    <button id="button" type="submit" class="pure-button pure-button-primary">Relate</button>
+                </fieldset>
+            </form>
+            <div class="pure-u-1">
+                <dl id="result"></dl>
+            </div>
+        </div>
     </div>
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="static/wikidata-sdk.min.js"></script>
-    <script src="static/jquery.easy-autocomplete.min.js"></script> 
+    <script src="static/jquery.easy-autocomplete.min.js"></script>
     <script src="static/script.js"></script>
 </body>
+
 </html>
